@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  function aaa() {
+    console.log(this)//window ()
+  }
+
+  let obj = {
+    abc: function () {
+      console.log(this)//obj  (1)
+      setTimeout(() => { console.log(this) }, 100)//obj (4)
+      let obj2 = {
+        jkl: function () {
+          console.log(this);//obj2 (2)
+          setTimeout(() => {
+            console.log(this) //obj2 (5)
+            function hjk() { console.log(this); } //window(3)
+            hjk()
+          }, 200)
+          // function hjk(){console.log(this);}
+          // hjk()
+        },
+
+        asd: function () {
+
+        }
+      }
+      obj2.jkl()
+    }
+  }
+  obj.abc()
+  aaa()
+</script>
+
+</html>
